@@ -29,5 +29,5 @@ Requires [Foundry](https://book.getfoundry.sh/) (forge 1.3.5). Solc 0.8.30, Canc
 forge build
 forge test                      # 103 tests, no network, no external tools
 (cd test/ffi && npm ci)         # Node >= 22.18
-forge test --ffi                # 122 tests, adds real ML-DSA keys and signatures
+FOUNDRY_PROFILE=ffi forge test --ffi  # 122 tests, adds real ML-DSA keys and signatures
 ```

@@ -13,11 +13,9 @@ bytecode_hash = "none"
 cbor_metadata = true
 chain_id = 31337
 gas_limit = 9223372036854775807
-# Tests read vectors and artifacts. FFI stays off unless asked (see README).
-fs_permissions = [
-  { access = "read", path = "./" },
-  { access = "read-write", path = "./cache/ffi" },
-]
+# Tests read vectors and artifacts. Read-only: workers refuse builds that grant write access.
+# FFI tests that write scratch files use [profile.ffi] (see README).
+fs_permissions = [{ access = "read", path = "./" }]
 remappings = [
   "@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/",
   "forge-std/=lib/forge-std/src/",
@@ -36,3 +34,6 @@ seed = "0xb0c4e7"
 
 [lint]
 lint_on_build = false
+
+[profile.ffi]
+fs_permissions = [{ access = "read", path = "./" }, { access = "read-write", path = "./cache/ffi" }]
