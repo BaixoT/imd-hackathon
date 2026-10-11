@@ -1,0 +1,15 @@
+# Foundry
+cache/
+out/
+broadcast/
+coverage/
+lcov.info
+
+# FFI test dependencies (test/ffi)
+node_modules/
+
+# Secrets never belong here: use an encrypted Foundry keystore (--account)
+.env
+.env.*
+*.key
+*.pem

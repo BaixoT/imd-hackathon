@@ -1,0 +1,17 @@
+{
+  "revision": "cca262b537a5ac2ee55efb427e5c61de0308e566",
+  "source": "https://raw.githubusercontent.com/fireblocks-labs/evm-ml-dsa-verifier/cca262b537a5ac2ee55efb427e5c61de0308e566/",
+  "files": {
+    "test/fixtures/fireblocks/LICENSE": "819c7c05673a72f38824225d46ac36068272a416874f9f8af62d3dd54ac672fe",
+    "test/vendor/fireblocks/IMLDSAVerifier.sol": "de2461a26d1ed4306a6888e998d06c725960f6556a945516e9d93f7564fcf379",
+    "test/vendor/fireblocks/MLDSA44Verifier.sol": "e73fbc14792d8a48869476e54ad58cae2b78dab0930a9f0bda0aa1363db7176e",
+    "test/vendor/fireblocks/Decode.sol": "62800c6dc97625581add1aaae8650f344fd1f165f7ac53d2632dc5c995758a9f",
+    "test/vendor/fireblocks/FastKeccak170.sol": "a0b8b0c01542264b192b3697f5e2d078dd173506b89fd824df32707e6ee2c3cd",
+    "test/vendor/fireblocks/Ntt.sol": "87b2d1b4d88312b40694163c0656e5435d06221a18625cce65dbcf1f9674795f",
+    "test/vendor/fireblocks/InvNtt.sol": "b097bdd5a4881559abe91303239b3f12e1a2a74be48894b7134efc48be0a125c",
+    "test/fixtures/fireblocks/prepare/prepare.py": "92a817269979de4c6ddf50ae19d1f9ea7bebcaea56857adb24ca3469ee9b1132",
+    "test/fixtures/fireblocks/prepare/mldsa_min.py": "1035735af5cab2310ed0ebcdee9a4f6c614369e3c114e5d995837f4764910d2d",
+    "test/fixtures/fireblocks/helpers/f1600_170.hex": "f26320c4be54bdf71270d0ca92a6cf665966f0a320b84676aa75d5fa3dc612c4",
+    "test/fixtures/fireblocks/public-vectors.json": "56426e6e743ffe31dc576c2534050ddc2d53490f863b00704572b4a6bcb7aab8"
+  }
+}
