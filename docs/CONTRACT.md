@@ -142,6 +142,11 @@ stays used. No fee.
 - **L1 Open admission.** Anyone can register any public key with a blob of their choosing, so a mempool observer can
   register a victim's public key first with a mismatched blob, denying that key. The victim must use a new key.
   Clients must check `prepare(pk)` against the on-chain blob before depositing.
+  **Rotation is a second, fee-free squatting path.** `rotateKey` takes the new public key as free input and its
+  possession proof is checked against the caller-chosen `rotation.pkBlob`, so a registered attacker can mark any
+  key hash as used for gas only (about 2.8M gas per key, no registration fee). This can front-run a victim's
+  `createVault` or `rotateKey`, which then reverts with `PublicKeyAlreadyRegistered`. Custody and nonce of the
+  victim are unaffected; the victim must use a new key. Accepted as part of L1.
 - **L2 Controller is permanent.** Losing or compromising the controller wallet cannot be repaired. The wallet is an ECDSA
   key: against a quantum attacker only the ML-DSA key remains.
 - **L3 Public data.** Balances and amounts are public.

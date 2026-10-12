@@ -236,6 +236,8 @@ contract ERC20CustodyTest is AssetBase {
         vault.withdrawERC20(idA, asset, bob, 101, assetHash, a);
         vm.expectRevert(BunkerVault.InvalidRecipient.selector);
         vault.withdrawERC20(idA, asset, address(0), 1, assetHash, a);
+        vm.expectRevert(BunkerVault.InvalidRecipient.selector);
+        vault.withdrawERC20(idA, asset, asset, 1, assetHash, a);
         vm.expectRevert(BunkerVault.InvalidAmount.selector);
         vault.depositERC20(idA, asset, 0, assetHash, a);
         vm.etch(asset, hex"60006000fd");
@@ -262,6 +264,7 @@ contract ERC20CustodyTest is AssetBase {
         assertEq(page[0], b);
         assertEq(vault.heldTokens(idA, 2, 5).length, 0);
         assertEq(vault.heldTokens(idA, 99, 5).length, 0);
+        assertEq(vault.heldTokens(idA, 1, type(uint256).max).length, 1); // no overflow on huge count
         assertEq(vault.heldTokenCount(idB), 0);
         // Another vault depositing the same token is tracked separately.
         deposit(a, aHash, 5, idB);

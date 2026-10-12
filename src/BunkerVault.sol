@@ -295,7 +295,8 @@ contract BunkerVault is ReentrancyGuard {
     function heldTokens(bytes32 id, uint256 start, uint256 count) external view returns (address[] memory page) {
         address[] storage all = _heldTokens[id];
         if (start >= all.length) return page;
-        uint256 end = start + count > all.length ? all.length : start + count;
+        uint256 remaining = all.length - start;
+        uint256 end = count >= remaining ? all.length : start + count;
         page = new address[](end - start);
         for (uint256 i = start; i < end; ++i) page[i - start] = all[i];
     }
@@ -347,6 +348,7 @@ contract BunkerVault is ReentrancyGuard {
     ) external nonReentrant {
         _requireVaultAsset(token);
         _checkRecipient(recipient);
+        if (recipient == token) revert InvalidRecipient();
         if (amount == 0) revert InvalidAmount();
         _consumeAuthorization(id, WITHDRAW_ERC20,
             keccak256(abi.encode(token, recipient, amount, expectedAssetHash, msg.sender)), authorization);
